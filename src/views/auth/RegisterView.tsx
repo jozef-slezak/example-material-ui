@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
+import React from 'react'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import * as Yup from 'yup'
+import { Formik } from 'formik'
 import {
   Box,
   Button,
@@ -11,9 +11,9 @@ import {
   Link,
   TextField,
   Typography,
-  makeStyles
-} from '@material-ui/core';
-import Page from 'src/components/Page';
+} from '@mui/material'
+import { makeStyles } from '@mui/styles'
+import Page from '../../components/Page'
 
 const useStyles = makeStyles((theme: any) => ({
   root: {

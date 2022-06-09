@@ -5,14 +5,13 @@ import PropTypes from 'prop-types';
 import {
   Avatar,
   Box,
-  Button,
   Divider,
   Drawer,
   Hidden,
   List,
   Typography,
-  makeStyles
-} from '@material-ui/core';
+} from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import {
   AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
@@ -21,9 +20,13 @@ import {
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
   UserPlus as UserPlusIcon,
-  Users as UsersIcon
 } from 'react-feather';
-import NavItem from './NavItem';
+import {
+  MenuItems,
+  calculateMenuItems
+} from '@iteria-app/component-templates'
+import * as graphqlGen from '../../../generated/graphql'
+import { Home } from 'react-feather'
 
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
@@ -56,21 +59,6 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       href: '/app/dashboard',
       icon: BarChartIcon,
       title: 'Dashboard'
-    },
-    {
-      href: '/app/customers',
-      icon: UsersIcon,
-      title: intl.formatMessage({id: "customers"})
-    },
-    {
-      href: '/app/generated-customers',
-      icon: UsersIcon,
-      title: 'Generated customers'
-    },
-    {
-      href: '/app/generated-customer-detail',
-      icon: UsersIcon,
-      title: 'Customer detail'
     },
     {
       href: '/app/products',
@@ -132,35 +120,19 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       <Divider />
       <Box p={2}>
         <List>
-          {items.map(item => (
-            <NavItem
-              className=""
-              href={item.href}
-              key={item.title}
-              title={item.title}
-              icon={item.icon}
-            />
-          ))}
+          <MenuItems
+            items={[
+              {
+                className: '',
+                href: '/app/dashboard',
+                icon: Home,
+                label: 'menu.dashboard',
+                title: 'Dashboard',
+              },
+              ...calculateMenuItems(graphqlGen, UserIcon),
+            ]}
+          />
         </List>
-      </Box>
-      <Box flexGrow={1} />
-      <Box p={2} m={2} bgcolor="background.dark">
-        <Typography align="center" gutterBottom variant="h4">
-          Need more?
-        </Typography>
-        <Typography align="center" variant="body2">
-          Upgrade to PRO version and access 20 more screens
-        </Typography>
-        <Box display="flex" justifyContent="center" mt={2}>
-          <Button
-            color="primary"
-            component="a"
-            href="https://react-material-kit.devias.io"
-            variant="contained"
-          >
-            See PRO version
-          </Button>
-        </Box>
       </Box>
     </Box>
   );
@@ -198,7 +170,7 @@ NavBar.propTypes = {
 };
 
 NavBar.defaultProps = {
-  onMobileClose: () => {},
+  onMobileClose: () => { },
   openMobile: false
 };
 

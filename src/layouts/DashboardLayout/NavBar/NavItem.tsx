@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import { NavLink as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   Button,
   ListItem,
-  makeStyles
-} from '@material-ui/core';
+} from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme) => ({
   item: {
@@ -56,7 +56,6 @@ const NavItem = ({
       {...rest}
     >
       <Button
-        activeClassName={classes.active}
         className={classes.button}
         component={RouterLink}
         to={href}

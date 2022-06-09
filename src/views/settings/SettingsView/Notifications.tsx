@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React from 'react'
+import PropTypes from 'prop-types'
 import {
   Box,
   Button,
@@ -12,22 +11,11 @@ import {
   FormControlLabel,
   Grid,
   Typography,
-  makeStyles
-} from '@material-ui/core';
-
-const useStyles = makeStyles({
-  root: {},
-  item: {
-    display: 'flex',
-    flexDirection: 'column'
-  }
-});
+} from '@mui/material'
 
 const Notifications: React.FC<any> = ({ className, ...rest }) => {
-  const classes = useStyles();
-
   return (
-    <form className={clsx(classes.root, className)} {...rest}>
+    <form sx={{ height: '100%' }} {...rest}>
       <Card>
         <CardHeader
           subheader="Manage the notifications"
@@ -36,7 +24,7 @@ const Notifications: React.FC<any> = ({ className, ...rest }) => {
         <Divider />
         <CardContent>
           <Grid container spacing={6} wrap="wrap">
-            <Grid className={classes.item} item md={4} sm={6} xs={12}>
+            <Grid item md={4} sm={6} xs={12}>
               <Typography color="textPrimary" gutterBottom variant="h6">
                 Notifications
               </Typography>
@@ -54,7 +42,7 @@ const Notifications: React.FC<any> = ({ className, ...rest }) => {
                 label="Phone calls"
               />
             </Grid>
-            <Grid className={classes.item} item md={4} sm={6} xs={12}>
+            <Grid item md={4} sm={6} xs={12}>
               <Typography color="textPrimary" gutterBottom variant="h6">
                 Messages
               </Typography>

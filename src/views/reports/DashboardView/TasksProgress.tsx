@@ -1,6 +1,5 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import {
   Avatar,
   Box,
@@ -10,30 +9,16 @@ import {
   LinearProgress,
   Typography,
   makeStyles,
-  colors
-} from '@material-ui/core';
-import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
-import { FormattedMessage } from 'react-intl';
-
-const useStyles = makeStyles(() => ({
-  root: {
-    height: '100%'
-  },
-  avatar: {
-    backgroundColor: colors.orange[600],
-    height: 56,
-    width: 56
-  }
-}));
-
+  colors,
+} from '@mui/material'
+import { InsertChart } from '@mui/icons-material'
+import { FormattedMessage } from 'react-intl'
 const TasksProgress: React.FC<any> = ({ className, ...rest }) => {
-  const classes = useStyles();
-
   return (
-    <Card className={clsx(classes.root, className)} {...rest}>
+    <Card sx={{ height: '100%' }} {...rest}>
       <CardContent>
-        <Grid container justify="space-between" spacing={3}>
-          <Grid item>
+        <Grid container spacing={3}>
+          <Grid item xs={9}>
             <Typography color="textSecondary" gutterBottom variant="h6">
               <FormattedMessage id="tasks.progress" tagName="span" />
             </Typography>
@@ -41,10 +26,14 @@ const TasksProgress: React.FC<any> = ({ className, ...rest }) => {
               75.5%
             </Typography>
           </Grid>
-          <Grid item>
-            <Avatar className={classes.avatar}>
-              <InsertChartIcon />
-            </Avatar>
+          <Grid item xs={3}>
+            <Grid container justifyContent="right">
+              <Avatar
+                sx={{ bgcolor: colors.orange[600], height: 56, width: 56 }}
+              >
+                <InsertChart />
+              </Avatar>
+            </Grid>
           </Grid>
         </Grid>
         <Box mt={3}>
@@ -52,11 +41,9 @@ const TasksProgress: React.FC<any> = ({ className, ...rest }) => {
         </Box>
       </CardContent>
     </Card>
-  );
-};
-
+  )
+}
 TasksProgress.propTypes = {
-  className: PropTypes.string
-};
-
-export default TasksProgress;
+  className: PropTypes.string,
+}
+export default TasksProgress
